@@ -1,0 +1,5 @@
+django==4.1
+mysqlclient
+django-filer
+django-admin-sortable2
+python-dotenv
