@@ -1,56 +1,110 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Космическое агентство</title>
-	<!-- Подключение Bootstrap 5 -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Подключение Slick Slider -->
-	<link rel="stylesheet" type="text/css"
-	      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-	<link rel="stylesheet" type="text/css"
-	      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Космическое агентство</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="{% static "nasa_project/css/style.css" %}" type="text/css">
 </head>
 <body>
-<div class="container mt-5">
-	<h1>Космическое агентство</h1>
-	<div class="slider-for">
-		{% for slide in slides %}
-		<div>
-			<img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="img-fluid">
-		</div>
-		{% endfor %}
-	</div>
-	<div class="slider-nav mt-3">
-		{% for slide in slides %}
-		<div>
-			<img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="img-thumbnail">
-		</div>
-		{% endfor %}
-	</div>
+
+<!-- Навигация -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container pe-5">
+        <button class="navbar-toggler pull-left" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <img src="{% static "nasa_project/images/logo.svg" %}" alt="Логотип Космического агентства" class="logo">
+        </a>
+
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item me-3">
+                    <a class="nav-link text-uppercase" href="#">Преимущества</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="#">Фотографии</a>
+                </li>
+            </ul>
+        </div>
+        <li class="list-unstyled nav-item">
+            <button class="btn btn-danger ms-sm-3 text-uppercase">Вход</button>
+        </li>
+    </div>
+</nav>
+
+<!-- Основной контент -->
+<div class="container container-slide mt-5">
+    <div class="row justify-content-center text-center">
+        <div class="col-lg-7">
+            <h1 class="display-4">Космическое агентство</h1>
+            <p class="lead">Национальное управление по аэронавтике и исследованию космического пространства — ведомство, относящееся к федеральному правительству США и подчиняющееся непосредственно президенту США.</p>
+        </div>
+    </div>
+    <div class="col d-lg-flex text-center">
+        <!-- Иконки и главное изображение в одной строке -->
+        <div class="icons row row-cols-2 justify-content-center text-center my-5">
+            <!-- Первая строка с иконками -->
+            <div class="col mb-4 ">
+                <img src="{% static 'nasa_project/images/fa6-solid_shuttle-space.svg' %}" alt="Иконка 1" class="icon">
+                <p>Свое шасси — пилотируемые корабли</p>
+            </div>
+            <div class="col mb-4 ">
+                <img src="{% static 'nasa_project/images/ion_telescope.svg' %}" alt="Иконка 2" class="icon">
+                <p>Лучшее технологическое оборудование</p>
+            </div>
+
+            <!-- Вторая строка с иконками -->
+            <div class="col mb-4 ">
+                <img src="{% static 'nasa_project/images/bi_moon-stars-fill.svg' %}" alt="Иконка 3" class="icon">
+                <p>Целимся на Луну и Марс</p>
+            </div>
+            <div class="col mb-4 ">
+                <img src="{% static 'nasa_project/images/bxs_medal.svg' %}" alt="Иконка 4" class="icon">
+                <p>Золотая медаль по научным исследованиям</p>
+            </div>
+        </div>
+            <!-- Третья строка с иконками -->
+        <!-- Главное изображение справа -->
+        <div class="col-lg-6">
+            <div class="main-image">
+                <img src="{% static 'nasa_project/images/main_images.jfif' %}" alt="Главное изображение" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.slider-for').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            fade: true,
-            asNavFor: '.slider-nav'
-        });
-        $('.slider-nav').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            asNavFor: '.slider-for',
-            dots: true,
-            centerMode: true,
-            focusOnSelect: true
-        });
-    });
-</script>
+
+<!-- Фотографии -->
+<section class="photo-section text-center">
+    <div class="container">
+        <h2 class="section-title">Фотографии</h2>
+        <!-- Основной слайдер -->
+        <div class="slider-for">
+            {% for slide in slides %}
+                <div class="slider-item">
+                    <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="img-fluid rounded">
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Миниатюры для слайдера -->
+        <div class="slider-nav mt-4">
+            {% for slide in slides %}
+                <div class="img-fluid-slide">
+                    <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="img-fluid rounded">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Скрипты -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="{% static 'nasa_project/js/scripts.js' %}"></script>
 </body>
 </html>
