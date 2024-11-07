@@ -97,3 +97,14 @@ MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'main_slide': {'size': (750, 420), 'crop': True},
+        'sliders': {'size': (165, 165), 'crop': True},
+    },
+}
+
+THUMBNAIL_DEFAULT_OPTIONS = {
+    'crop': 'smart',
+}

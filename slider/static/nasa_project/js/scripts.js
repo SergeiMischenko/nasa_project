@@ -23,27 +23,26 @@ $(document).ready(function() {
     const $sliderItems = $('.slider-for .slider-item img');
 
     $sliderItems.on('click', function() {
-        // Получаем URL изображения и индекс
+        // Получаем оригинальный URL изображения и индекс
         currentIndex = $sliderItems.index(this);
-        const imgSrc = $(this).attr('src');
+        const originalSrc = $(this).data('original-src');
 
-        $('#modalImage').attr('src', imgSrc);
+        $('#modalImage').attr('src', originalSrc);
         $('#imageModal').modal('show');
     });
 
     // Функция для обновления изображения в модальном окне
     function updateModalImage(index) {
-        const imgSrc = $sliderItems.eq(index).attr('src');
-        $('#modalImage').attr('src', imgSrc);
+        const originalSrc = $sliderItems.eq(index).data('original-src');
+        $('#modalImage').attr('src', originalSrc);
     }
 
-    // Обработчик для кнопки «влево»
+    // Обработчики кнопок «влево» и «вправо»
     $('#prevImage').on('click', function() {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : $sliderItems.length - 1;
         updateModalImage(currentIndex);
     });
 
-    // Обработчик для кнопки «вправо»
     $('#nextImage').on('click', function() {
         currentIndex = (currentIndex < $sliderItems.length - 1) ? currentIndex + 1 : 0;
         updateModalImage(currentIndex);

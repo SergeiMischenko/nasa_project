@@ -1,3 +1,4 @@
+{% load thumbnail %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
@@ -85,7 +86,7 @@
         <div class="slider-for">
             {% for slide in slides %}
                 <div class="slider-item">
-                    <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="img-fluid rounded">
+                    <img src="{{ slide.image|thumbnail_url:'main_slide' }}" data-original-src="{{ slide.image.url }}" alt="{{ slide.title }}" class="img-fluid rounded">
                 </div>
             {% endfor %}
         </div>
@@ -93,7 +94,7 @@
         <div class="slider-nav mt-4">
             {% for slide in slides %}
                 <div class="img-fluid-slide">
-                    <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="img-fluid rounded">
+                    <img src="{{ slide.image|thumbnail_url:'sliders' }}" alt="{{ slide.title }}" class="img-fluid rounded">
                 </div>
             {% endfor %}
         </div>
